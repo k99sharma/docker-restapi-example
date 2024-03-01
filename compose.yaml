@@ -1,0 +1,20 @@
+services:
+  api:
+    container_name: dre-api
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "8080:3000"
+    env_file:
+      - .env
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    container_name: my-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - C:\mongodbData:/data/db
